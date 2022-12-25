@@ -1,15 +1,16 @@
 import React from "react";
 import PrimaryButtons from "../../assets/components/PrimaryButtons";
+import treatment from "../../assets/images/treatment.png";
 
 const DentalCare = () => {
   return (
     <div>
-      <div className="hero mt-16">
-        <div className="hero-content flex-col  lg:flex-row justify-end    ">
-          <div className="">
+      <div className="hero my-16">
+        <div className="hero-content    flex-col lg:flex-row  ">
+          <div className="w-1/2  flex lg:justify-end justify-center">
             <img
-              src="https://placeimg.com/260/400/arch"
-              className="lg:mr-8 rounded-lg shadow-2xl "
+              src={treatment}
+              className="lg:mr-8 rounded-lg shadow-2xl w-1/2"
             />
           </div>
           <div className="w-1/2 ml-8">
