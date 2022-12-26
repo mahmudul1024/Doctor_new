@@ -1,6 +1,6 @@
 import React from "react";
 
-const AppointCard = ({ appCard }) => {
+const AppointCard = ({ appCard, setTreatment }) => {
   const { name, slots } = appCard;
   return (
     <div className="card shadow-xl mx-10 ">
@@ -11,9 +11,14 @@ const AppointCard = ({ appCard }) => {
           {slots.length} slot {slots.length > 1 ? "spaces" : "space"} available
         </p>
         <div className="card-actions justify-center">
-          <button className=" text-white btn btn-primary">
+          <label
+            htmlFor="booking-modal"
+            disabled={slots.length === 0}
+            className="btn text-white btn btn-primary"
+            onClick={() => setTreatment(appCard)}
+          >
             Book Appointment
-          </button>
+          </label>
         </div>
       </div>
     </div>
