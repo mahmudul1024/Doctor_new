@@ -1,17 +1,37 @@
-import React from "react";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { Result } from "postcss";
+import React, { useContext, useState } from "react";
 
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../assets/components/Context/AuthProvider";
 
 const Login = () => {
+  const [userError, setUserError] = useState(null);
+  let navigate = useNavigate();
+  let location = useLocation();
+  let from = location.state?.from?.pathname || "/";
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm();
 
+  const { signIn } = useContext(AuthContext);
+
   const handleLogin = (data) => {
     console.log(data);
+    setUserError(" ");
+    signIn(data.email, data.password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        navigate(from, { replace: true });
+      })
+      .catch((er) => {
+        setUserError(er.message);
+        // console.log(er.message);
+      });
   };
   return (
     <div className="h-[800px] flex justify-center items-center">
@@ -51,6 +71,10 @@ const Login = () => {
                 },
               })}
             />
+            <div>
+              {userError && <p className="text-red-600">{userError}</p>}
+            </div>
+
             <label className="label">
               <span className="label-text">Forgot password?</span>
             </label>

@@ -1,27 +1,37 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../assets/components/Context/AuthProvider";
 
 const SignUp = () => {
+  const [signupError, setSignupError] = useState(null);
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm();
 
-  const { createUser } = useContext(AuthContext);
+  const { createUser, updateUser } = useContext(AuthContext);
 
   const handleSignup = (data) => {
+    setSignupError(" ");
     console.log(data);
     createUser(data.email, data.password)
       .then((result) => {
         const user = result.user;
         console.log(user);
+        toast.success("User has been Created Successfully");
+        const userInfoss = { displayName: data.name };
+
+        updateUser(userInfoss)
+          .then(() => {})
+          .catch(() => {});
       })
       .catch((er) => {
         console.error(er.message);
+        setSignupError(er.message);
       });
   };
   return (
@@ -67,7 +77,7 @@ const SignUp = () => {
               {...register("password", {
                 required: "password is required",
                 pattern: {
-                  value: /[A-Za-z]{8}/,
+                  value: /[A-Za-z]{6}/,
                   message: "Provide a Strong Password",
                 },
                 minLength: {
@@ -83,6 +93,9 @@ const SignUp = () => {
             {errors.password && (
               <p className="text-red-600">{errors.password?.message}</p>
             )}
+          </div>
+          <div>
+            {signupError && <p className="text-red-600">{signupError}</p>}
           </div>
           <input
             className="btn btn-accent w-full"
