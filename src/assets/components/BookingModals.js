@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { format } from "date-fns";
+import { AuthContext } from "./Context/AuthProvider";
+import toast from "react-hot-toast";
 
 const BookingModals = ({ treatment, selectedDate, setTreatment }) => {
   const { name, slots } = treatment;
   const date = format(selectedDate, "PP");
+
+  const { user } = useContext(AuthContext);
 
   const handleBooking = (event) => {
     event.preventDefault();
@@ -21,10 +25,28 @@ const BookingModals = ({ treatment, selectedDate, setTreatment }) => {
       email,
       phone,
     };
+    // catching not nescessary and no need of tran/raect query
+    fetch("http://localhost:5000/bookings", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(booking),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+
+        if (data.acknowledged) {
+          setTreatment(null);
+          toast.success("booking confirmed");
+        }
+      })
+      .catch((er) => console.error(er));
 
     console.log(booking);
-    setTreatment(null);
   };
+
   return (
     <>
       <input type="checkbox" id="booking-modal" className="modal-toggle" />
@@ -55,12 +77,16 @@ const BookingModals = ({ treatment, selectedDate, setTreatment }) => {
             <input
               type="text"
               name="pname"
+              defaultValue={user?.displayName}
+              disabled
               placeholder="Your Name"
               className="input w-full input-bordered"
             />
             <input
               type="email"
               name="email"
+              defaultValue={user?.email}
+              disabled
               placeholder="Your Email"
               className="input w-full input-bordered "
             />
