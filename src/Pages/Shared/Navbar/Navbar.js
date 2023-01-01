@@ -1,9 +1,20 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../assets/components/Context/AuthProvider";
 
 const Navbar = () => {
   const { user, LogOut } = useContext(AuthContext);
+  const [theme, setTheme] = useState("aqua");
+
+  useEffect(() => {
+    document.querySelector("html").setAttribute("data-theme", theme);
+  }, [theme]);
+
+  const handleToggle = (event) => {
+    // setTheme(theme === "dark" ? "light" : "dark");
+    const themeSelected = event.target.value;
+    setTheme(themeSelected);
+  };
   const handleLogout = () => {
     LogOut()
       .then(() => {})
@@ -19,6 +30,15 @@ const Navbar = () => {
       </li>
       <li>
         <Link to="/about">About</Link>
+      </li>
+      <li>
+        <select onClick={handleToggle} className="btn btn-ghost  ">
+          <option value="">Toggle Theme</option>
+          <option value="light">Light</option>
+          <option value="retro">Retro</option>
+          <option value="aqua">Aqua</option>
+          <option value="dark">Dark</option>
+        </select>
       </li>
 
       {user?.uid ? (
@@ -44,7 +64,7 @@ const Navbar = () => {
     </React.Fragment>
   );
   return (
-    <div data-theme="dark">
+    <div data-theme="cupcake">
       <div className="navbar bg-base-100 flex justify-between">
         <div className="navbar-start">
           <div className="dropdown">

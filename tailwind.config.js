@@ -12,6 +12,11 @@ module.exports = {
           "base-100": "#FFFFFF",
         },
       },
+      "dark",
+      "cupcake",
+      "light",
+      "aqua",
+      "retro",
     ],
   },
   theme: {
