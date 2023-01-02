@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../assets/components/Context/AuthProvider";
+import useToken from "../Dashboard/Hooks/useToken";
 
 const SignUp = () => {
   const [signupError, setSignupError] = useState(null);
@@ -14,7 +15,12 @@ const SignUp = () => {
   } = useForm();
 
   const navigate = useNavigate();
+  const [createdUserEmail, setCreatedUserEmail] = useState("");
+  const [token] = useToken(createdUserEmail);
 
+  if (token) {
+    navigate("/");
+  }
   const { createUser, updateUser } = useContext(AuthContext);
 
   const handleSignup = (data) => {
@@ -29,7 +35,7 @@ const SignUp = () => {
 
         updateUser(userInfoss)
           .then(() => {
-            navigate("/");
+            saveUser(data.name, data.email);
           })
           .catch(() => {});
       })
@@ -38,6 +44,23 @@ const SignUp = () => {
         setSignupError(er.message);
       });
   };
+
+  const saveUser = (name, email) => {
+    const user = { name, email };
+    fetch("http://localhost:5000/users", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("save user data", data);
+        setCreatedUserEmail(email);
+      });
+  };
+
   return (
     <div className="h-[800px] flex justify-center items-center">
       <div className="w-96 p-7">
