@@ -20,12 +20,18 @@ const ConfirmationModal = ({
           <div className="modal-action">
             <label
               onClick={() => successAction(modalData)}
+              // delete that id
               htmlFor="confirmation-modal"
               className="btn"
             >
+              {/* Delete Name */}
               {successButtonName}
             </label>
-            <button onClick={handleCloseModal} className="btn btn-outline">
+            <button
+              onClick={handleCloseModal}
+              // set null
+              className="btn btn-outline"
+            >
               Cancel
             </button>
           </div>

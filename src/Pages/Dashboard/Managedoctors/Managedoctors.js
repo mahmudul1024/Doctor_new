@@ -5,7 +5,6 @@ import ConfirmationModal from "../../Shared/ConfirmationModal/ConfirmationModal"
 
 const Managedoctors = () => {
   const [isModalOpen, setIsModalOpen] = useState(null);
-  const [closeModal, setCloseModal] = useState(null);
 
   const handleCloseModal = () => {
     setIsModalOpen(null);
@@ -104,20 +103,20 @@ const Managedoctors = () => {
                     Delete
                   </label>
                 </th>
-                {isModalOpen && (
-                  <ConfirmationModal
-                    title={"Are you sure you want to delete ?"}
-                    message={`If you delete ${doc.name} .It can not be undone`}
-                    successAction={handleDeleteDoctor}
-                    successButtonName="Delete"
-                    handleCloseModal={handleCloseModal}
-                    modalData={doc}
-                  ></ConfirmationModal>
-                )}
               </tr>
             ))}
           </tbody>
         </table>
+        {isModalOpen && (
+          <ConfirmationModal
+            title={"Are you sure you want to delete ?"}
+            message={`If you delete ${isModalOpen.name} .It can not be undone`}
+            successAction={handleDeleteDoctor}
+            successButtonName="Delete"
+            handleCloseModal={handleCloseModal}
+            modalData={isModalOpen}
+          ></ConfirmationModal>
+        )}
       </div>
     </div>
   );
