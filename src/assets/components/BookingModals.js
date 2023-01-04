@@ -4,7 +4,7 @@ import { AuthContext } from "./Context/AuthProvider";
 import toast from "react-hot-toast";
 
 const BookingModals = ({ treatment, selectedDate, setTreatment, refetch }) => {
-  const { name: treatementName, slots } = treatment;
+  const { name: treatementName, slots, price } = treatment;
   const date = format(selectedDate, "PP");
 
   const { user } = useContext(AuthContext);
@@ -24,6 +24,7 @@ const BookingModals = ({ treatment, selectedDate, setTreatment, refetch }) => {
       slot,
       email,
       phone,
+      price: price,
     };
     // catching not nescessary and no need of tran/raect query
     fetch("http://localhost:5000/bookings", {

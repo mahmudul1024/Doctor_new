@@ -5,10 +5,11 @@ const CheckoutForm = ({ booking }) => {
   const [clientSecret, setClientSecret] = useState("");
   const [cardError, setCardError] = useState("");
   const [success, setSuccess] = useState("");
+  const [processing, setProcessing] = useState(false);
   const [transactionId, setTransactionId] = useState("");
   const stripe = useStripe();
   const elements = useElements();
-  const { price, email, patient } = booking;
+  const { price, email, patient, _id } = booking;
 
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
@@ -46,6 +47,7 @@ const CheckoutForm = ({ booking }) => {
       setCardError("");
     }
     setSuccess("");
+    setProcessing(true);
     const { paymentIntent, error: confirmError } =
       await stripe.confirmCardPayment(clientSecret, {
         payment_method: {
@@ -61,9 +63,30 @@ const CheckoutForm = ({ booking }) => {
       return;
     }
     if (paymentIntent.status === "succeeded") {
-      setSuccess("Congrats! your payment has been completed");
-      setTransactionId(paymentIntent.id);
+      console.log(" card Info", card);
+      const payment = {
+        price,
+        transactionId: paymentIntent.id,
+        email,
+        bookingId: _id,
+      };
+      fetch("http://localhost:5000/payments", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          autorization: `bearer ${localStorage.getItem("accessToken")}`,
+        },
+        body: JSON.stringify(payment),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.insertedId) {
+            setSuccess("Congrats! your payment has been completed");
+            setTransactionId(paymentIntent.id);
+          }
+        });
     }
+    setProcessing(false);
   };
 
   return (
@@ -88,7 +111,7 @@ const CheckoutForm = ({ booking }) => {
         <button
           className="btn btn-sm mt-4 btn-primary"
           type="submit"
-          disabled={!stripe || !clientSecret}
+          disabled={!stripe || !clientSecret || processing}
         >
           Pay
         </button>
