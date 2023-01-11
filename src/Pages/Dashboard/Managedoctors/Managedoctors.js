@@ -18,11 +18,14 @@ const Managedoctors = () => {
     queryKey: ["doctors"],
     queryFn: async () => {
       try {
-        const res = await fetch("http://localhost:5000/doctors", {
-          headers: {
-            authorization: `bearer ${localStorage.getItem("accessToken")}`,
-          },
-        });
+        const res = await fetch(
+          "https://doctor-praxis-server.vercel.app/doctors",
+          {
+            headers: {
+              authorization: `bearer ${localStorage.getItem("accessToken")}`,
+            },
+          }
+        );
         const data = await res.json();
         return data;
       } catch (err) {}
@@ -32,7 +35,7 @@ const Managedoctors = () => {
   console.log(doctors);
   const handleDeleteDoctor = (doctor) => {
     console.log(doctor);
-    fetch(`http://localhost:5000/doctors/${doctor._id}`, {
+    fetch(`https://doctor-praxis-server.vercel.app/doctors/${doctor._id}`, {
       method: "DELETE",
       headers: {
         authorization: `bearer ${localStorage.getItem("accessToken")}`,

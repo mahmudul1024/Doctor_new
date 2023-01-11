@@ -27,7 +27,7 @@ const BookingModals = ({ treatment, selectedDate, setTreatment, refetch }) => {
       price: price,
     };
     // catching not nescessary and no need of tran/raect query
-    fetch("http://localhost:5000/bookings", {
+    fetch("https://doctor-praxis-server.vercel.app/bookings", {
       method: "POST",
       headers: {
         "content-type": "application/json",

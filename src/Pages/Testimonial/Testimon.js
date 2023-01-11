@@ -3,9 +3,9 @@ import React from "react";
 const Testimon = ({ review }) => {
   const { name, img, review: userReview, location } = review;
   return (
-    <div className="card  shadow-xl">
+    <div className="card  shadow-xl ">
       <div className="card-body">
-        <p>{userReview}</p>
+        <p className=" font-googFont4">{userReview}</p>
         <div className=" flex items-center mt-6">
           <div className="mr-6 avatar">
             <div className="w-16 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">

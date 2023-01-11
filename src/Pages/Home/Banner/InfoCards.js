@@ -8,22 +8,22 @@ const InfoCards = () => {
   const cardData = [
     {
       id: 1,
-      name: "Opening Hours",
-      description: "Open 9:00 am to 5.00pm everyday",
+      name: "Öffnungszeiten",
+      description: "von 9:00  bis 17.00 ",
       icon: clock,
       bgClass: "bg-gradient-to-r from-primary to-secondary",
     },
     {
       id: 2,
-      name: "Our Locations",
-      description: "Open 9:00 am to 5.00pm everyday",
+      name: "Unsere Standorte",
+      description: "Graben Str 47057 Duisburg ",
       icon: marker,
       bgClass: "bg-gradient-to-r from-primary to-secondary",
     },
     {
       id: 3,
-      name: "Contact Us",
-      description: "Open 9:00 am to 5.00pm everyday",
+      name: "Kontakt",
+      description: "+49 (0)176-30169377",
       icon: phone,
       bgClass: "bg-gradient-to-r from-primary to-secondary",
     },

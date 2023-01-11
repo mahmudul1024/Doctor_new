@@ -23,16 +23,25 @@ const Navbar = () => {
   const navelements = (
     <React.Fragment>
       <li>
-        <Link to="/">Home</Link>
+        <Link className=" font-googFont3  text-xl" to="/">
+          Home
+        </Link>
       </li>
       <li>
-        <Link to="/appointment">Appointment</Link>
+        <Link className=" font-googFont3  text-xl" to="/appointment">
+          Appointment
+        </Link>
       </li>
       <li>
-        <Link to="/about">About</Link>
+        <Link className=" font-googFont3  text-xl" to="/about">
+          About
+        </Link>
       </li>
       <li>
-        <select onClick={handleToggle} className="btn btn-ghost  ">
+        <select
+          onClick={handleToggle}
+          className="btn btn-ghost  font-normal font-googFont3  text-xl px-0 "
+        >
           <option value="">Toggle Theme</option>
           <option value="light">Light</option>
           <option value="retro">Retro</option>
@@ -44,11 +53,17 @@ const Navbar = () => {
       {user?.uid ? (
         <>
           <li>
-            <Link to="/dashboard">Dashboard</Link>
+            <Link className=" font-googFont3  text-xl" to="/dashboard">
+              Dashboard
+            </Link>
           </li>
           <li>
             <button className="">
-              <Link onClick={handleLogout} to="/">
+              <Link
+                className=" font-googFont3  text-xl"
+                onClick={handleLogout}
+                to="/"
+              >
                 Logout
               </Link>
             </button>
@@ -57,7 +72,9 @@ const Navbar = () => {
       ) : (
         <>
           <li>
-            <Link to="/login">Login</Link>
+            <Link className=" font-googFont3  text-xl" to="/login">
+              Login
+            </Link>
           </li>
         </>
       )}
@@ -91,7 +108,10 @@ const Navbar = () => {
               {navelements}
             </ul>
           </div>
-          <Link to="/" className="btn btn-ghost normal-case text-xl">
+          <Link
+            to="/"
+            className="font-googFont3  text-3xl text-green-600 shadow-2xl rounded"
+          >
             Doctors Praxis
           </Link>
         </div>

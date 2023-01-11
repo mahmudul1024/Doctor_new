@@ -20,7 +20,14 @@ module.exports = {
     ],
   },
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        googleFont1: ["Staatliches", "cursive"],
+        googFont2: ["Oswald", "sans-serif"],
+        googFont3: ["Bebas Neue", "cursive"],
+        googFont4: ["Kaushan Script", "cursive"],
+      },
+    },
   },
   plugins: [require("daisyui")],
 };

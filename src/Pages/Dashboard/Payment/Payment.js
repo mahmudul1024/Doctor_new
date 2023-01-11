@@ -10,15 +10,15 @@ const stripePromise = loadStripe(
 );
 console.log(stripePromise);
 const Payment = () => {
-  const navigation = useNavigation();
+  // const navigation = useNavigation();
   const booking = useLoaderData();
   const { treatment, appointmentDate, slot, price } = booking;
 
   console.log("payment data", price);
 
-  if (navigation.state === "loading") {
-    return <progress className="progress w-56"></progress>;
-  }
+  // if (navigation.state === "loading") {
+  //   return <progress className="progress w-56"></progress>;
+  // }
   return (
     <div>
       <h3 className=" text-3xl py-3"> Payment for {treatment} </h3>
