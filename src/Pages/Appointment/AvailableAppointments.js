@@ -35,9 +35,10 @@ const AvailableAppointments = ({ selectedDate }) => {
   //     .then((data) => setAppointmentOptions(data));
   // }, []);
   return (
-    <section className="mt-16">
-      <p className="text-center font-bold text-secondary">
-        Available Appointments{format(selectedDate, "PP")}
+    <section className="mt-16 font-googFont3  ">
+      <p className="text-center font-bold ">
+        <span className="text-4xl">Available Appointments </span>{" "}
+        {format(selectedDate, "PP")}
       </p>
       <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap">
         {appointmentOptions.map((option) => (

@@ -23,7 +23,7 @@ const MyAppointments = () => {
   console.log("bookings paisi", bookings);
 
   return (
-    <div>
+    <div className="">
       <h3 className="text-3xl mb-5">MyAppointments {bookings?.length}</h3>
       <div className="overflow-x-auto">
         <table className="table w-full">
@@ -48,13 +48,13 @@ const MyAppointments = () => {
                 <td>
                   {booking.price && !booking.paid && (
                     <Link to={`/dashboard/payment/${booking._id}`}>
-                      <button className="btn bg-gradient-to-r from-primary to-secondary text-white border-none font-googFont3  text-2xl">
+                      <button className="btn bg-gradient text-white border-none font-googFont3  text-2xl">
                         Pay
                       </button>
                     </Link>
                   )}
                   {booking.price && booking.paid && (
-                    <button className="btn bg-gradient-to-r from-primary to-secondary text-white border-none font-googFont3  text-2xl">
+                    <button className="btn bg-gradient text-white border-none font-googFont3  text-2xl">
                       Paid
                     </button>
                   )}

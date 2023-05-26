@@ -3,6 +3,7 @@ import doctor from "../../assets/images/doctor.png";
 import appointment from "../../assets/images/appointment.png";
 import PrimaryButtons from "../../assets/components/PrimaryButtons";
 import { Fade } from "react-reveal";
+import ThreeDImage from "../../ThreeDImage";
 
 const MakeAppointment = () => {
   return (

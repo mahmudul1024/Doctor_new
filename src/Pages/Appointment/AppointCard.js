@@ -3,9 +3,9 @@ import React from "react";
 const AppointCard = ({ appCard, setTreatment }) => {
   const { name, slots, price } = appCard;
   return (
-    <div className="card shadow-xl mx-10 ">
+    <div className="card shadow-xl mx-10 text-xl">
       <div className="card-body text-center">
-        <h2 className="text-2xl font-bold text-secondary ">{name}</h2>
+        <h2 className="text-2xl font-bold  ">{name}</h2>
         <p>{slots?.length > 0 ? slots[0] : "Try Another Day"}</p>
         <p>
           {slots?.length} slot {slots?.length > 1 ? "spaces" : "space"}{" "}
@@ -16,7 +16,7 @@ const AppointCard = ({ appCard, setTreatment }) => {
           <label
             htmlFor="booking-modal"
             // disabled={slots?.length === 0}
-            className="btn text-white  btn-primary"
+            className="btn bg-gradient text-white border-none font-googFont3  text-2xl  "
             onClick={() => setTreatment(appCard)}
           >
             Book Appointment

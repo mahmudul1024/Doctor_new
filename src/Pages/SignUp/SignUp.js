@@ -62,7 +62,7 @@ const SignUp = () => {
   };
 
   return (
-    <div className="h-[800px] flex justify-center items-center">
+    <div className="h-[800px] flex justify-center items-center font-googFont3">
       <div className="w-96 p-7">
         <h2 className="text-xl text-center">Sign Up</h2>
         <form onSubmit={handleSubmit(handleSignup)}>
@@ -125,13 +125,13 @@ const SignUp = () => {
             {signupError && <p className="text-red-600">{signupError}</p>}
           </div>
           <input
-            className="btn btn-accent w-full"
+            className="btn btn-accent w-full text-2xl mb-2"
             value="Sign Up"
             type="submit"
           />
         </form>
         <p>
-          Already Registered{" "}
+          Already Registered ?{" "}
           <Link className="text-secondary " to="/login">
             goto Login
           </Link>

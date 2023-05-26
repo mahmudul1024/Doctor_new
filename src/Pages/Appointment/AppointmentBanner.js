@@ -5,7 +5,7 @@ import { format } from "date-fns";
 
 const AppointmentBanner = ({ setSelectedDate, selectedDate }) => {
   return (
-    <header className="my-6">
+    <header className="my-6 mt-16">
       <div className="hero ">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <img src={chair} className="w-1/2  rounded-lg shadow-2xl" />

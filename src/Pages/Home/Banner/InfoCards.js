@@ -11,21 +11,21 @@ const InfoCards = () => {
       name: "Öffnungszeiten",
       description: "von 9:00  bis 17.00 ",
       icon: clock,
-      bgClass: "bg-gradient-to-r from-primary to-secondary",
+      bgClass: "bg-gradient",
     },
     {
       id: 2,
       name: "Unsere Standorte",
       description: "Graben Str 47057 Duisburg ",
       icon: marker,
-      bgClass: "bg-gradient-to-r from-primary to-secondary",
+      bgClass: "bg-gradient",
     },
     {
       id: 3,
       name: "Kontakt",
       description: "+49 (0)176-30169377",
       icon: phone,
-      bgClass: "bg-gradient-to-r from-primary to-secondary",
+      bgClass: "bg-gradient",
     },
   ];
 

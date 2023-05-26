@@ -3,6 +3,7 @@ import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../assets/components/Context/AuthProvider";
+import ThreeDImage from "../../ThreeDImage";
 import useToken from "../Dashboard/Hooks/useToken";
 
 const Login = () => {
@@ -41,8 +42,10 @@ const Login = () => {
       });
   };
   return (
-    <div className="h-[800px] flex justify-center items-center">
-      <div className="w-96 p-7">
+    <div className="my-16 flex justify-center  font-googFont2 text-xl mt-24">
+      <ThreeDImage></ThreeDImage>
+
+      <div className="w-96 p-7 ">
         <h2 className="text-xl text-center">Login</h2>
         <form onSubmit={handleSubmit(handleLogin)}>
           <div className="form-control w-full ">
@@ -90,14 +93,14 @@ const Login = () => {
             )}
           </div>
           <input
-            className="btn btn-accent w-full"
+            className="btn bg-green-700 text-xl  w-full border-0"
             value="Login"
             type="submit"
           />
         </form>
-        <p>
+        <p className="mt-2 text-sm">
           New to Doctors Praxis{" "}
-          <Link className="text-secondary " to="/signup">
+          <Link className="text-green-400 " to="/signup">
             Create new Account
           </Link>
         </p>
