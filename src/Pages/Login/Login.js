@@ -25,7 +25,7 @@ const Login = () => {
     handleSubmit,
   } = useForm();
 
-  const { signIn } = useContext(AuthContext);
+  const { signIn, signInWithGoogle } = useContext(AuthContext);
 
   const handleLogin = (data) => {
     console.log(data);
@@ -41,6 +41,21 @@ const Login = () => {
         // console.log(er.message);
       });
   };
+
+  const handleGoogleSignIn = () => {
+    setUserError(" ");
+    signInWithGoogle()
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        // Additional logic after successful Google sign-in
+      })
+      .catch((er) => {
+        setUserError(er.message);
+        // console.log(er.message);
+      });
+  };
+
   return (
     <div className="my-16 flex justify-center  font-googFont2 text-xl mt-24">
       <ThreeDImage></ThreeDImage>
@@ -105,7 +120,9 @@ const Login = () => {
           </Link>
         </p>
         <div className="divider">OR</div>
-        <button className="btn btn-outline w-full">CONTINUE WITH GOOGLE</button>
+        <button className="btn btn-outline w-full" onClick={handleGoogleSignIn}>
+          CONTINUE WITH GOOGLE
+        </button>
       </div>
     </div>
   );

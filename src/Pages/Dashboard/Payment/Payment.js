@@ -20,7 +20,7 @@ const Payment = () => {
   //   return <progress className="progress w-56"></progress>;
   // }
   return (
-    <div>
+    <div className="mt-28 px-4">
       <h3 className=" text-3xl py-3"> Payment for {treatment} </h3>
       <p className=" text-xl">
         Please Pay ${price} for your appointment on {appointmentDate} at {slot}

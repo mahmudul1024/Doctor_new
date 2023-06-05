@@ -81,7 +81,7 @@ const CheckoutForm = ({ booking }) => {
         .then((res) => res.json())
         .then((data) => {
           if (data.insertedId) {
-            setSuccess("Congrats! your payment has been completed");
+            setSuccess("Congrats! Your payment has been completed");
             setTransactionId(paymentIntent.id);
           }
         });
@@ -90,38 +90,50 @@ const CheckoutForm = ({ booking }) => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit} className="bg-orange-300 p-5 rounded">
-        <CardElement
-          options={{
-            style: {
-              base: {
-                fontSize: "16px",
-                color: "#424770",
-                "::placeholder": {
-                  color: "#aab7c4",
+    <div className="max-w-md mx-auto  ">
+      <form
+        onSubmit={handleSubmit}
+        className="bg-lime-300  shadow-md rounded-lg px-8 pt-6 pb-8 mb-4 mx-5 "
+      >
+        <div className="mb-6">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="card-element"
+          >
+            Card Details:
+          </label>
+          <CardElement
+            options={{
+              style: {
+                base: {
+                  fontSize: "16px",
+                  color: "#424770",
+                  "::placeholder": {
+                    color: "#aab7c4",
+                  },
+                },
+                invalid: {
+                  color: "#9e2146",
                 },
               },
-              invalid: {
-                color: "#9e2146",
-              },
-            },
-          }}
-        />
+            }}
+            className="p-2 border border-gray-300 rounded "
+          />
+        </div>
         <button
-          className="btn btn-sm mt-4 btn-primary"
+          className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded disabled:bg-gray-400 disabled:cursor-not-allowed w-full"
           type="submit"
           disabled={!stripe || !clientSecret || processing}
         >
-          Pay
+          {processing ? "Processing..." : "Pay"}
         </button>
       </form>
-      <p className=" text-red-500 ">{cardError}</p>
+      {cardError && <p className="text-red-500 mb-2">{cardError}</p>}
       {success && (
-        <div>
-          <p className="text-green-500">{success}</p>
-          <p>
-            Your TransactionId:{" "}
+        <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4">
+          <p>{success}</p>
+          <p className="mt-2">
+            Your Transaction ID:{" "}
             <span className="font-bold">{transactionId}</span>
           </p>
         </div>
