@@ -4,7 +4,7 @@ import "./Banner.css";
 import Fade from "react-reveal/Fade";
 import { Link } from "react-router-dom";
 import ThreeDImage from "../../../ThreeDImage";
-import MessengerCustomerChat from "react-messenger-customer-chat/lib/MessengerCustomerChat";
+
 const Banner = () => {
   return (
     <div>
@@ -16,6 +16,7 @@ const Banner = () => {
           <Fade right>
             <img
               src={chairImage}
+              alt="chobi"
               className=" rounded-lg shadow-2xl lg:w-1/2 w-3/4 md:w-1/2"
             />
           </Fade>
@@ -36,10 +37,6 @@ const Banner = () => {
             </div>
           </Fade>
         </div>
-        <MessengerCustomerChat
-          pageId="100089099576643"
-          appId="708807977472583"
-        />
       </div>
     </div>
   );

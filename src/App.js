@@ -1,6 +1,5 @@
 import { RouterProvider } from "react-router-dom";
 import "./App.css";
-import FacebookChat from "./Pages/Facebook/ChatButton";
 import { router } from "./Routes/Routes";
 import ThreeDImage from "./ThreeDImage";
 

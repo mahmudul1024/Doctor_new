@@ -1,5 +1,5 @@
 import React from "react";
-import MessengerCustomerChat from "react-messenger-customer-chat/lib/MessengerCustomerChat";
+
 import doctorImage from "../../assets/images/doctor.png";
 import ThreeDImage from "../../ThreeDImage";
 
