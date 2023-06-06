@@ -25,10 +25,10 @@ const Login = () => {
     handleSubmit,
   } = useForm();
 
-  const { signIn, signInWithGoogle } = useContext(AuthContext);
+  const { signIn, signInWithGoogle, updateUser } = useContext(AuthContext);
 
   const handleLogin = (data) => {
-    console.log(data);
+    console.log("ami data bolchi", data);
     setUserError(" ");
     signIn(data.email, data.password)
       .then((result) => {
@@ -48,7 +48,18 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
-        // Additional logic after successful Google sign-in
+        setLoginUserToken(user.email);
+
+        // Update user profile with Google email
+        if (user) {
+          const email = user.email;
+          const userInfo = {
+            email: email,
+          };
+          updateUser(userInfo).then(() => {
+            // Additional logic after successful Google sign-in
+          });
+        }
       })
       .catch((er) => {
         setUserError(er.message);
